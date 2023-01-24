@@ -19,8 +19,8 @@ Aşağıdakileri yapın:
 
    İPUCU: fonksiyon oluşturmaya gerek yok
 */
-
-
+let surucuYasi = 19;
+console.log(surucuYasi > 18 ? true : false);
 
 /*
 Görev 1b - Değerler (puanlamaya dahil değildir)
@@ -33,7 +33,11 @@ Aşağıdakileri yapınız:
 
    İPUCU: fonksiyon oluşturmaya gerek yok
 */
-
+let birinciDeger = 158, ikinciDeger = 149;
+if (birinciDeger > ikinciDeger) {
+  birinciDeger = birinciDeger * 2;
+}
+console.log(birinciDeger);
 
 
 
@@ -49,8 +53,8 @@ Aşağıdakileri yapın:
    İPUCU: Number metoduna bakabilirsin
 */
 
-
-
+let dogumTarihi = "1999";
+console.log(Number(dogumTarihi));
 
 /*
 Görev 1d - Çarpma
@@ -61,8 +65,8 @@ Aşağıdakileri yapın:
    3. a ve b'yi çarpıp, sonucu dönün
 */
 
-function carpma(/*buraya kodunu yazabilirsin*/){
-  /*buraya kodunu yazabilirsin*/
+function carpma(a, b) {
+  return a * b;
 }
 
 
@@ -77,8 +81,8 @@ Aşağıdakileri yapın:
  3. Hesaplanan köpeğin yaşını dönün.
  */
 
-function kopeginYasi(/*buraya kodunu yazabilirsin*/){
-  /*buraya kodunu yazabilirsin*/
+function kopeginYasi(a) {
+  return a * 7;
 }
 
 
@@ -104,9 +108,22 @@ Aşağıdakileri oyun isimli fonksiyonu kullanarak yapın.
 OYUNUN KURALLARI: Makas Kağıdı yener| Kağıt Taşı yener | Taş Makas'ı yener | veya beraberlik olur.
 */
 
-function oyun(oyuncu, bilgisayar){
-  /*buraya kodunu yazabilirsin*/
+function oyun(oyuncu, bilgisayar) {
+  if (oyuncu == bilgisayar) return 'Beraberlik';
+  if ((oyuncu == 'Taş' && bilgisayar == 'Makas') ||
+    (oyuncu == 'Kağıt' && bilgisayar == 'Taş') ||
+    (oyuncu == 'Makas' && bilgisayar == 'Kağıt'))
+    return 'Kazandın!';
+  return 'Kaybettin!';
 }
+
+function secimOlustur() {
+  let secenekler = ['Taş', 'Kağıt', 'Makas'];
+  let secim = Math.floor(Math.random() * 3);
+  return secenekler[secim];
+}
+
+
 
 
 
@@ -120,8 +137,8 @@ Aşağdakileri milDonusturucu fonksiyonunu kullanarak yapın:
 3. Mil değerini geri dönün
 */
 
-function milDonusturucu(/*buraya kodunu yazabilirsin*/){
-  /*buraya kodunu yazabilirsin*/
+function milDonusturucu(x) {
+  return x * 0.621371;
 }
 
 
@@ -134,8 +151,8 @@ Aşağıdakileri feetDonusturucu fonsiyonunu kullanarak yapın:
 3. feet değerini geri dönün
 */
 
-function feetDonusturucu(/*buraya kodunu yazabilirsin*/){
-  /*buraya kodunu yazabilirsin*/
+function feetDonusturucu(x) {
+  return x / 30.48;
 }
 
 
@@ -153,8 +170,11 @@ Aşağıdakileri cocukSarkisi fonksiyonunda yapın:
 4. Bu döngüde, her seferinde cocukSarkisi fonsiyonu çalışsın ve console.log'a dönen metni yazdırsın.
 */
 
-function cocukSarkisi(/*buraya kodunu yazabilirsin*/){
-      /*buraya kodunu yazabilirsin*/
+function cocukSarkisi(n) {
+  return (`${n} küçük maymun yatakta zıplamış, biri düşüp başını çarpmış, Anne doktoru aramış, Doktor çok kızmış: Bir daha yatakta zıplamak yok!`);
+}
+for (let i = 5; i > 0; i--) {
+  console.log(cocukSarkisi(i));
 }
 
 
@@ -173,8 +193,12 @@ Aşağdakileri notHesapla fonksiyonunda yapın.
  dönün
 */
 
-function notHesapla(/*buraya kodunu yazabilirsin*/){
-/*buraya kodunu yazabilirsin*/
+function notHesapla(not) {
+  if (not > 89) { return "A aldın"; }
+  else if (not > 79) { return "B aldın"; }
+  else if (not > 69) { return "C aldın"; }
+  else if (not > 59) { return "D aldın"; }
+  else return "F aldın";
 }
 
 
@@ -191,14 +215,34 @@ Aşağıdakileri sesliHarfSayaci fonskiyonunda yapın.
 */
 
 
-function sesliHarfSayaci(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function sesliHarfSayaci(sozcuk) {
+  let sozcukHarfleri= sozcuk.split('');
+  let sesliHarfSayisi =0;
+  let sesliHarfler=['a','e','ı','i','o','ö','u','ü'];
+  for (let i=0; i<sozcuk.length; i++)
+    {
+      if (sesliHarfler.includes(sozcukHarfleri[i].toLowerCase())){
+        sesliHarfSayisi +=1;
+      }
+    }
+  console.log(sesliHarfSayisi);
 }
-
+sesliHarfSayaci("buUkEeet");
+// function sesliHarfSayaci(yazi) {
+//   let sesliHarfler = "aeiouAEIOU";
+//   let sesliHarfSayisi = 0;
+//   for (let i = 0; i < yazi.length; i++) 
+//   {
+//   if (sesliHarfler.includes(yazi[i])) {
+//   sesliHarfSayisi++;
+//   }
+//   }
+//   return sesliHarfSayisi; 
+// }
 
 
 /* Lütfen bu satırın alt tarafını değiştirmeyin */
-function sa(){
+function sa() {
   console.log('Kodlar çalışıyor');
   return 'as';
 }
